@@ -11,7 +11,7 @@ const App = () => {
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="about" element={<GenaretedImg />} />
+        <Route path="genarated-img" element={<GenaretedImg />} />
       </Route>
     </Routes>
   );

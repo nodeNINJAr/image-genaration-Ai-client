@@ -5,9 +5,24 @@ const Home = () => {
 const handleImageGenarate = (e)=>{
     e.preventDefault();
     const prompt = e.target.prompt.value;
-    console.log(prompt);
+    const form = new FormData()
+    form.append('prompt', prompt)
+    fetch(import.meta.env.VITE_CLIPDROP_API, {
+      method: 'POST',
+      headers: {
+        'x-api-key':import.meta.env.VITE_clipdrop_api_key,
+      },
+      body: form,
+    })
+      .then(response => response.arrayBuffer())
+      .then(buffer => {
+    
+       const blob = new Blob([buffer], { type:'image/png' });
+       const url = URL.createObjectURL(blob)
+       console.log(url);
+      })
 }
-
+// 
 // 
   return (
     <div className="w-full mx-auto py-20">
